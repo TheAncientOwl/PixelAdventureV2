@@ -13,6 +13,7 @@ namespace PixelAdventure.API
 
         private void Start() 
         {
+            Debug.Log("Start");
             m_Animator = GetComponent<Animator>();    
         }
 
