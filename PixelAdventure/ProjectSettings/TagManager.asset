@@ -1,0 +1,65 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!78 &1
+TagManager:
+  serializedVersion: 2
+  tags:
+  - Fire
+  layers:
+  - Default
+  - TransparentFX
+  - Ignore Raycast
+  - 
+  - Water
+  - UI
+  - 
+  - 
+  - Player
+  - Ground
+  - Fruits
+  - PlatformGround
+  - Fire
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  m_SortingLayers:
+  - name: Default
+    uniqueID: 0
+    locked: 0
+  - name: Background
+    uniqueID: 654195015
+    locked: 0
+  - name: UnderMap
+    uniqueID: 2070178699
+    locked: 0
+  - name: MapSolid
+    uniqueID: 1499288997
+    locked: 0
+  - name: MapSemiSolid
+    uniqueID: 3233833577
+    locked: 0
+  - name: UnderPlayer
+    uniqueID: 4097752901
+    locked: 0
+  - name: Player
+    uniqueID: 4090896593
+    locked: 0
+  - name: OverPlayer
+    uniqueID: 2868795919
+    locked: 0
