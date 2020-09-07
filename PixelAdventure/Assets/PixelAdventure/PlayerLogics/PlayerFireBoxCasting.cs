@@ -4,19 +4,16 @@ namespace PixelAdventure.PlayerLogics
 {
     public class PlayerFireBoxCasting : MonoBehaviour
     {
-        [Header("Ground")]
-        [SerializeField] float m_GroundOffsetY = 1f;
-        [SerializeField] Vector2 m_GroundBoxCastSize = new Vector2(0.91f, 0.27f);
+        private static readonly Vector2 k_GROUND_BOX_CAST_SIZE = new Vector2(0.91f, 0.27f);
+        private static readonly Vector2 k_SIDES_BOX_CAST_SIZE = new Vector2(0.75f, 1.31f);
 
-        [Header("Sides")]
-        [SerializeField] float m_SidesOffsetY = 0.27f;
-        [SerializeField] Vector2 m_SidesBoxCastSize = new Vector2(0.75f, 1.31f);
+        private const float k_GROUND_OFFSET_Y = 1f;
+        private const float k_SIDES_OFFSET_Y = 0.27f;
 
-        [Header("Misc")]
         [SerializeField] LayerMask m_FireLayerMask = 0;
 
-        private Transform m_Transform = null;
         private PlayerMovement m_PlayerMovement = null;
+        private Transform m_Transform = null;
 
         private void Start() 
         {
@@ -29,8 +26,8 @@ namespace PixelAdventure.PlayerLogics
             // * ground
             RaycastHit2D[] hits = Physics2D.BoxCastAll
             (
-                origin    : m_Transform.position + Vector3.down * m_GroundOffsetY,
-                size      : m_GroundBoxCastSize,
+                origin    : m_Transform.position + Vector3.down * k_GROUND_OFFSET_Y,
+                size      : k_GROUND_BOX_CAST_SIZE,
                 layerMask : m_FireLayerMask,
                 direction : Vector2.down,
                 distance  : 0f,
@@ -44,8 +41,8 @@ namespace PixelAdventure.PlayerLogics
             // * sides
             hits = Physics2D.BoxCastAll
             (
-                origin    : m_Transform.position + Vector3.down * m_SidesOffsetY + new Vector3((m_PlayerMovement.LastDirection * m_SidesBoxCastSize.x / 2f), 0f, 0f),
-                size      : m_SidesBoxCastSize,
+                origin    : m_Transform.position + Vector3.down * k_SIDES_OFFSET_Y + new Vector3((m_PlayerMovement.LastDirection * k_SIDES_BOX_CAST_SIZE.x / 2f), 0f, 0f),
+                size      : k_SIDES_BOX_CAST_SIZE,
                 layerMask : m_FireLayerMask,
                 direction : Vector2.down,
                 distance  : 0f,
@@ -66,12 +63,12 @@ namespace PixelAdventure.PlayerLogics
         {
             if (!m_DrawGizomos) return;
 
-            Vector3 center = GetComponent<Transform>().position + Vector3.down * m_GroundOffsetY;
-            Vector2 halfSize = m_GroundBoxCastSize / 2f;
+            Vector3 center = GetComponent<Transform>().position + Vector3.down * k_GROUND_OFFSET_Y;
+            Vector2 halfSize = k_GROUND_BOX_CAST_SIZE / 2f;
             Draw(center, halfSize, m_GroundColor);
 
-            center = GetComponent<Transform>().position + Vector3.down * m_SidesOffsetY - new Vector3((-1f * m_SidesBoxCastSize.x / 2f), 0f, 0f);
-            halfSize = m_SidesBoxCastSize / 2f;
+            center = GetComponent<Transform>().position + Vector3.down * k_SIDES_OFFSET_Y - new Vector3((-1f * k_SIDES_BOX_CAST_SIZE.x / 2f), 0f, 0f);
+            halfSize = k_SIDES_BOX_CAST_SIZE / 2f;
             Draw(center, halfSize, m_SidesColor);
         }
 

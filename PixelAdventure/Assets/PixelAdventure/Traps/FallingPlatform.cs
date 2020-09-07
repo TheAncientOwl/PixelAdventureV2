@@ -7,8 +7,8 @@ namespace PixelAdventure.Traps
     public class FallingPlatform : MonoBehaviour
     {
         private static readonly int k_OFF_HASH = Animator.StringToHash("off");
-        private static readonly float k_UP_DISTANCE = 0.25f;
-        private static readonly float k_SPEED = 0.3f;
+        private const float k_UP_DISTANCE = 0.25f;
+        private const float k_SPEED = 0.3f;
 
         private bool m_MoveToTarget = true;
         private bool m_MoveLock = false;
@@ -27,16 +27,6 @@ namespace PixelAdventure.Traps
             m_Origin = m_Body.position.y;
             m_Target = m_Body.position.y + k_UP_DISTANCE;
         }
-
-        // private void OnCollisionEnter2D(Collision2D other)
-        // {
-        //     if (other.gameObject.CompareTag(Player.TAG))
-        //     {
-        //         Debug.Log(PlayerMovement.Instance.YVelocity + " | Grounded: " + PlayerMovement.Instance.IsGrounded);
-        //     }
-        //     if (other.gameObject.CompareTag(Player.TAG) && PlayerMovement.Instance.IsGrounded)
-        //         Invoke("Fall", 0.6f);
-        // }
 
         private void OnCollisionStay2D(Collision2D other) 
         {

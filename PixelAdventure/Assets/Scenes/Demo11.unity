@@ -4026,7 +4026,7 @@ Transform:
   - {fileID: 1340171197}
   - {fileID: 1740898311}
   m_Father: {fileID: 0}
-  m_RootOrder: 4
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &756001914
 PrefabInstance:
@@ -4589,10 +4589,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 57a7b0f49160cc646a96724f7de30ae3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_GroundOffsetY: 1
-  m_GroundBoxCastSize: {x: 0.91, y: 0.27}
-  m_SidesOffsetY: 0.27
-  m_SidesBoxCastSize: {x: 0.75, y: 1.31}
   m_FireLayerMask:
     serializedVersion: 2
     m_Bits: 4096
@@ -5794,8 +5790,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 459cd9a5bc6b2d34396810f4ab719649, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_MoveTime: 0.7
-  m_MoveSpeed: 2
   m_BackgroundObjects:
   - {fileID: 960674800}
   - {fileID: 1698210815}

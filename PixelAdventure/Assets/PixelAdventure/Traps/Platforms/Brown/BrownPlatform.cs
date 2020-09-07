@@ -6,7 +6,7 @@ namespace PixelAdventure.Traps.Platforms.Brown
 {
     public class BrownPlatform : MonoBehaviour
     {
-        public static readonly float k_SPEED = 3f;
+        public const float SPEED = 3f;
         
         [SerializeField] Transform m_Target = null;
         [SerializeField] MovementType m_MovementType = MovementType.Vertical;

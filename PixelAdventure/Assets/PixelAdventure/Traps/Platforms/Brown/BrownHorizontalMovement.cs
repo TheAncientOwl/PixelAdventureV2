@@ -48,7 +48,7 @@ namespace PixelAdventure.Traps.Platforms.Brown
                 {
                     m_Body.Translate
                     (
-                        x: BrownPlatform.k_SPEED * Time.deltaTime,
+                        x: BrownPlatform.SPEED * Time.deltaTime,
                         y: 0f,
                         z: 0f
                     );
@@ -72,7 +72,7 @@ namespace PixelAdventure.Traps.Platforms.Brown
                 {
                     m_Body.Translate
                     (
-                        x: -BrownPlatform.k_SPEED * Time.deltaTime,
+                        x: -BrownPlatform.SPEED * Time.deltaTime,
                         y: 0f,
                         z: 0f
                     );

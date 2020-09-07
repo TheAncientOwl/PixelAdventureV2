@@ -47,7 +47,7 @@ namespace PixelAdventure.Traps.Platforms.Grey
                 {
                     m_Body.Translate
                     (
-                        x: -GreyPlatform.k_SPEED * Time.deltaTime,
+                        x: -GreyPlatform.SPEED * Time.deltaTime,
                         y: 0f,
                         z: 0f
                     );
@@ -57,7 +57,7 @@ namespace PixelAdventure.Traps.Platforms.Grey
                 {
                     m_Body.Translate
                     (
-                        x: GreyPlatform.k_SPEED * Time.deltaTime,
+                        x: GreyPlatform.SPEED * Time.deltaTime,
                         y: 0f,
                         z: 0f
                     );
@@ -65,7 +65,7 @@ namespace PixelAdventure.Traps.Platforms.Grey
                 }
 
             m_Animator.SetBool(k_ON_HASH, false);
-            yield return new WaitForSeconds(GreyPlatform.k_OFF_TIME);
+            yield return new WaitForSeconds(GreyPlatform.OFF_TIME);
             m_Animator.SetBool(k_ON_HASH, true);
 
             m_MoveLock = false;

@@ -6,8 +6,8 @@ namespace PixelAdventure.Traps.Platforms.Grey
 {
     public class GreyPlatform : MonoBehaviour
     {
-        public static readonly float k_SPEED = 3f;
-        public static readonly float k_OFF_TIME = 0.4f;
+        public const float SPEED = 3f;
+        public const float OFF_TIME = 0.4f;
 
         [SerializeField] Transform m_Target = null;
         [SerializeField] MovementType m_MovementType = MovementType.Horizontal;

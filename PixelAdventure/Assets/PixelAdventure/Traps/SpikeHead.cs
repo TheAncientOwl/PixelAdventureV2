@@ -6,14 +6,6 @@ namespace PixelAdventure.Traps
 {
     public class SpikeHead : MonoBehaviour
     {
-        [SerializeField] Transform[] m_Targets = null;
-
-        private static float k_BLINK_ANIMATION_TIME = 0.2f;
-        private static float k_HIT_ANIMATION_TIME = 0.2f;
-        private static float k_TIME_BEFORE_BLINK = 0.04f;
-        private static float k_IDLE_TIME = 1f - 0.2f;//- k_HIT_ANIMATION_TIME
-        private static float k_SPEED = 16f;
-
         private static readonly int k_IDLE_HASH   = Animator.StringToHash("idle");
         private static readonly int k_BLINK_HASH  = Animator.StringToHash("blink");
         private static readonly int k_TOP_HIT     = Animator.StringToHash("topHit");
@@ -21,14 +13,22 @@ namespace PixelAdventure.Traps
         private static readonly int k_RIGHT_HIT   = Animator.StringToHash("rightHit");
         private static readonly int k_BOTTOM_HIT  = Animator.StringToHash("bottomHit");
 
-        private Animator m_Animator = null;
+        private const float k_IDLE_TIME = 1f - 0.2f;//- k_HIT_ANIMATION_TIME
+        private const float k_BLINK_ANIMATION_TIME = 0.2f;
+        private const float k_HIT_ANIMATION_TIME = 0.2f;
+        private const float k_TIME_BEFORE_BLINK = 0.04f;
+        private const float k_SPEED = 16f;
 
-        private Vector2[] m_Points = null;
-        private int[] m_AnimationHashes = null;
+        [SerializeField] Transform[] m_Targets = null;
+
+        private CameraShaker m_CameraShaker = null;
+        private Animator m_Animator = null;
         private Transform m_Body = null;
+
+        private int[] m_AnimationHashes = null;
+        private Vector2[] m_Points = null;
         private bool m_MoveLock = false;
         private int m_PointIndex = 0;
-        private CameraShaker m_CameraShaker = null;
 
         private void Start() 
         {
@@ -157,7 +157,7 @@ namespace PixelAdventure.Traps
             if (startPos.y < endPos.y)
                 return k_TOP_HIT;
 
-            Debug.LogError("Something went wrong in");
+            Debug.LogError("Something went wrong in SpikeHead.GetAnimationTriggerHash");
             return k_IDLE_HASH;
         }
     }

@@ -5,9 +5,9 @@ namespace PixelAdventure.Background
 {
     public class BackgroundManager : MonoBehaviour
     {
-        [Range(0, 1)]
-        [SerializeField] float m_MoveTime = 0.7f;
-        [SerializeField] float m_MoveSpeed = 2f;
+
+        const float k_MOVE_TIME = 0.7f;
+        const float k_MOVE_SPEED = -2f;
 
         [SerializeField] Transform[] m_BackgroundObjects = null;
         [SerializeField] Sprite[] m_Sprites = null;
@@ -21,11 +21,9 @@ namespace PixelAdventure.Background
                 obj.GetComponent<SpriteRenderer>().sprite = sprite;
 
             m_BackgroundRoll = new BackgroundRoll(m_BackgroundObjects);
-            
-            m_MoveSpeed = -m_MoveSpeed;
         }
 
-        private void Update() => m_BackgroundRoll.Roll(m_MoveSpeed * Time.deltaTime, m_MoveTime);
+        private void Update() => m_BackgroundRoll.Roll(k_MOVE_SPEED * Time.deltaTime, k_MOVE_TIME);
 
     }
 }

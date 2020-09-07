@@ -7,9 +7,14 @@ namespace PixelAdventure.Traps
     {
         private static readonly int k_ON_HASH  = Animator.StringToHash("on");
         private static readonly int k_HIT_HASH = Animator.StringToHash("hit");
-        private Animator m_Animator = null;
+
+        private const float k_HIT_TIME = 0.4f;
+        private const float k_ON_TIME = 0.6f;
 
         private CircleCollider2D m_CircleCollider2D = null;
+        private Animator m_Animator = null;
+
+        private bool m_Lock = false;
 
         private void Start() 
         {
@@ -19,19 +24,6 @@ namespace PixelAdventure.Traps
             m_Animator = GetComponent<Animator>();
             m_Animator.SetBool(k_ON_HASH, false);
         }
-
-        private static float k_HIT_TIME = 0.4f;
-        private static float k_ON_TIME = 0.6f;
-
-        private bool m_Lock = false;
-
-        // MOVED TO PLAYER MOVEMENT RAYCASTS
-        // private void OnCollisionEnter2D(Collision2D other) 
-        // {
-        //     if (!m_Lock)
-        //         if (other.gameObject.CompareTag(Player.TAG))
-        //             StartCoroutine(Logics());  
-        // }
 
         public void ApplyLogics()
         {

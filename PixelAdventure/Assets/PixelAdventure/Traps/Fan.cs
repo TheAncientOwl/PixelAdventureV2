@@ -5,18 +5,17 @@ namespace PixelAdventure.Traps
 {
     public class Fan : MonoBehaviour
     {
+        private static readonly int k_ON_HASH = Animator.StringToHash("on");
+        private const float k_PUSH_FORCE_HORIZONTAL = 70f;
+        private const float k_PUSH_FORCE_VERTICAL = 100f;
+        private const float k_AIR_DRAG = 1.25f;
+
         [SerializeField] bool m_StartOn = true;
         [SerializeField] FanAirDirection m_AirDirection = FanAirDirection.Up;
         [SerializeField] float m_SwitchTime = 2f;
 
-        private static readonly float k_PUSH_FORCE_HORIZONTAL = 70f;
-        private static readonly float k_PUSH_FORCE_VERTICAL = 100f;
-        private static readonly float k_AIR_DRAG = 1.25f;
-
-        private static readonly int k_ON_HASH = Animator.StringToHash("on");
-        private Animator m_Animator = null;
-
         private ParticleSystem m_Particles = null;
+        private Animator m_Animator = null;
 
         private bool m_On = false;
         private float m_Timer = 0f;

@@ -5,18 +5,18 @@ namespace PixelAdventure.Traps
 {
     public class Saw : MonoBehaviour
     {
+        private static readonly int k_ON_HASH = Animator.StringToHash("on");
+        private const float k_SPEED = 2f;
+
         [SerializeField] float m_OffTime = 0.5f;
         [SerializeField] Transform[] m_Targets = null;
 
-        private Transform m_Body = null;
-        private Vector2[] m_Points = null;
-        private int m_PointIndex = 0;
-
-
-        private static float k_SPEED = 2f;
-        private static readonly int k_ON_HASH = Animator.StringToHash("on");
         private Animator m_Animator = null;
+        private Transform m_Body = null;
+
+        private Vector2[] m_Points = null;
         private bool m_MoveLock = false;
+        private int m_PointIndex = 0;
 
         private void Start() 
         {
