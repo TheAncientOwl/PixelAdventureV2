@@ -8,8 +8,8 @@ namespace PixelAdventure.API
         public static CameraShaker Instance {get; private set;}
         private void Awake() => Instance = this;
 
-        float m_Duration = 0.05f;
-        float m_Magnitude = 0.1f;
+        float m_Duration = 0.045f;
+        float m_Magnitude = 0.075f;
 
         private bool m_Shake = false;
 
@@ -22,15 +22,15 @@ namespace PixelAdventure.API
 
             Vector3 originalPosition = transform.localPosition;
 
-            float endTime = Time.realtimeSinceStartup + m_Duration;
+            float timer = 0f;
 
-            while (Time.realtimeSinceStartup < endTime)
+            while (timer < m_Duration)
             {
-
+                timer += Time.deltaTime;
                 transform.localPosition += new Vector3
                 (
-                    x: (Random.Range(-1f, 1f) + 0.01f) * m_Magnitude,
-                    y: (Random.Range(-1f, 1f) + 0.01f) * m_Magnitude,
+                    x: Random.Range(-1f, 1f) * m_Magnitude,
+                    y: Random.Range(-1f, 1f) * m_Magnitude,
                     z: originalPosition.z
                 );
 
