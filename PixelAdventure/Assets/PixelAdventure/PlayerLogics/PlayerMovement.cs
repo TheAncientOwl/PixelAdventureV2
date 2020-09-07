@@ -4,14 +4,23 @@ namespace PixelAdventure.PlayerLogics
 {
     public class PlayerMovement : MonoBehaviour
     {
-        public static PlayerMovement Instance {get; private set; }
+        public static PlayerMovement Instance { get; private set; }
         private void Awake() => Instance = this;
-        public float YVelocity { get{ return m_Rigidbody2D.velocity.y;} private set{}}
-        public Vector2 Velocity { get {return m_Rigidbody2D.velocity;} set{ m_Rigidbody2D.velocity = value; }}
-        public bool IsGrounded { get{return m_Grounded;} set{m_Grounded = value;}}
-        public Rigidbody2D Rigidbody2D { get{return m_Rigidbody2D;} private set{}}
-        public float LastDirection { get{return m_LastDirection;} private set{}}
 
+        public float YVelocity => m_Rigidbody2D.velocity.y;
+        public Rigidbody2D Rigidbody2D => m_Rigidbody2D;
+        public float LastDirection => m_LastDirection;
+        public Vector2 Velocity 
+        { 
+            get { return m_Rigidbody2D.velocity; } 
+            set { m_Rigidbody2D.velocity = value; }
+        }
+        public bool Grounded 
+        { 
+            get { return m_Grounded; } 
+            set { m_Grounded = value; }
+        }
+        
         private Rigidbody2D m_Rigidbody2D = null;
         private BoxCollider2D m_BoxCollider2D = null;
 

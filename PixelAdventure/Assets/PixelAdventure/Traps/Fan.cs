@@ -64,11 +64,11 @@ namespace PixelAdventure.Traps
             switch (m_AirDirection)
             {
                 case FanAirDirection.Up:
-                    movement.IsGrounded = false;
+                    movement.Grounded = false;
                     rb.AddForce(new Vector2(-rb.velocity.normalized.x * k_AIR_DRAG, k_PUSH_FORCE_VERTICAL));
                     break;
                 case FanAirDirection.Down:
-                    movement.IsGrounded = false;
+                    movement.Grounded = false;
                     rb.AddForce(new Vector2(-rb.velocity.normalized.x * k_AIR_DRAG, -k_PUSH_FORCE_VERTICAL));
                     break;
                 case FanAirDirection.Left:
