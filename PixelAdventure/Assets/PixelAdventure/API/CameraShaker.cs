@@ -8,28 +8,12 @@ namespace PixelAdventure.API
         public static CameraShaker Instance {get; private set;}
         private void Awake() => Instance = this;
 
-        private static readonly int k_SHAKE1_HASH = Animator.StringToHash("shake1");
-        private Animator m_Animator = null;
-
-        private void Start() 
-        {
-            m_Animator = GetComponent<Animator>();    
-        }
-
         float m_Duration = 0.05f;
         float m_Magnitude = 0.1f;
 
         private bool m_Shake = false;
 
-        public void Shake() => m_Animator.SetTrigger(k_SHAKE1_HASH); //StartCoroutine(ShakeCoroutine());
-
-        private void Update() 
-        {
-            if (Input.GetKeyDown(KeyCode.S))
-            {
-                Shake();
-            }    
-        }
+        public void Shake() => StartCoroutine(ShakeCoroutine());
 
         private IEnumerator ShakeCoroutine()
         {
