@@ -127,7 +127,7 @@ namespace PixelAdventure.Traps
                 }
 
             m_Animator.SetTrigger(m_AnimationHashes[m_PointIndex]);
-            //m_CameraShaker.Shake();
+            m_CameraShaker.Shake();
             m_CircleCollider2D.enabled = true;
             yield return new WaitForSeconds(k_HIT_ANIMATION_TIME);
 
