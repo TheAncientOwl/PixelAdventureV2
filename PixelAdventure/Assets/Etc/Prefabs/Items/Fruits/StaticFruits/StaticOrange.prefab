@@ -13,9 +13,9 @@ GameObject:
   - component: {fileID: 6516569677076839128}
   - component: {fileID: 6516569677076839131}
   - component: {fileID: 6516569677076839132}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: StaticOrange
-  m_TagString: Untagged
+  m_TagString: Fruit
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -71,7 +71,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -197214395
-  m_SortingLayer: 4
+  m_SortingLayer: 5
   m_SortingOrder: 0
   m_Sprite: {fileID: 4121880872312635667, guid: ffc9f271fad56c243a45f100b9dc6778,
     type: 3}

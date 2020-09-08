@@ -12,11 +12,9 @@ namespace PixelAdventure.Items.Fruits
             if (other.gameObject.CompareTag(Player.TAG))
             {
                 GetComponent<Animator>().SetTrigger(k_COLLECTED_HASH);
-                GetComponent<CircleCollider2D>().enabled = false;
-                Invoke("CacheToSpawner", 0.5f);
+                Destroy(this.gameObject, 0.5f);
             }    
         }
 
-        private void CacheToSpawner() => FruitSpawner.Instance.Cache(this.gameObject);
     }
 }

@@ -38,14 +38,14 @@
   <ItemGroup>
      <Compile Include="Assets\PixelAdventure\API\CameraShaker.cs" />
      <Compile Include="Assets\PixelAdventure\API\RandomObjectEnabler.cs" />
-     <Compile Include="Assets\PixelAdventure\API\ShowAs.cs" />
      <Compile Include="Assets\PixelAdventure\API\Utils.cs" />
      <Compile Include="Assets\PixelAdventure\Background\BackgroundManager.cs" />
      <Compile Include="Assets\PixelAdventure\Background\BackgroundPieceOutline.cs" />
      <Compile Include="Assets\PixelAdventure\Background\BackgroundRoll.cs" />
-     <Compile Include="Assets\PixelAdventure\Items\Boxes\Box1.cs" />
+     <Compile Include="Assets\PixelAdventure\Items\Boxes\Box.cs" />
+     <Compile Include="Assets\PixelAdventure\Items\Boxes\BoxBrokenPartDestroyer.cs" />
      <Compile Include="Assets\PixelAdventure\Items\Fruits\DynamicFruit.cs" />
-     <Compile Include="Assets\PixelAdventure\Items\Fruits\FruitSpawner.cs" />
+     <Compile Include="Assets\PixelAdventure\Items\Fruits\FruitAnimatorsManager.cs" />
      <Compile Include="Assets\PixelAdventure\Items\Fruits\StaticFruit.cs" />
      <Compile Include="Assets\PixelAdventure\PlayerLogics\Player.cs" />
      <Compile Include="Assets\PixelAdventure\PlayerLogics\PlayerFireBoxCasting.cs" />

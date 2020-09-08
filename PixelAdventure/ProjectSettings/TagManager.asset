@@ -5,6 +5,27 @@ TagManager:
   serializedVersion: 2
   tags:
   - Fire
+  - Ground
+  - Manager
+  - Traps
+  - Trampoline
+  - Spikes
+  - SpikeHead
+  - RockHead
+  - Fan
+  - FallingPlatform
+  - Arrow
+  - SpikedBall
+  - Saw
+  - SawChain
+  - GreyPlatform
+  - PlatformChain
+  - BrownPlatform
+  - FireEdge
+  - DynamicFruit
+  - Fruit
+  - Box
+  - BoxBrokenPart
   layers:
   - Default
   - TransparentFX
@@ -19,9 +40,9 @@ TagManager:
   - Fruits
   - PlatformGround
   - Fire
+  - BoxBrokenPart
   - 
-  - 
-  - 
+  - Traps
   - 
   - 
   - 

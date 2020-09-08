@@ -13,9 +13,9 @@ GameObject:
   - component: {fileID: 556877614157387716}
   - component: {fileID: 556877614157387713}
   - component: {fileID: 556877614157387712}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: StaticKiwi
-  m_TagString: Untagged
+  m_TagString: Fruit
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -71,7 +71,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -197214395
-  m_SortingLayer: 4
+  m_SortingLayer: 5
   m_SortingOrder: 0
   m_Sprite: {fileID: 4138223980208024357, guid: 5100b75572e484e458e4340e2afe9454,
     type: 3}
