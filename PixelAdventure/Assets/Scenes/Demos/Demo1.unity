@@ -1654,8 +1654,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 459cd9a5bc6b2d34396810f4ab719649, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_MoveTime: 0.7
-  m_MoveSpeed: 2
   m_BackgroundObjects:
   - {fileID: 1434496939}
   - {fileID: 1393205160}

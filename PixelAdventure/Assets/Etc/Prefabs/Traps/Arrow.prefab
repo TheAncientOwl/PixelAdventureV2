@@ -13,9 +13,9 @@ GameObject:
   - component: {fileID: 3154201766641501644}
   - component: {fileID: 3154201766641501633}
   - component: {fileID: 3154201766641501632}
-  m_Layer: 0
+  m_Layer: 15
   m_Name: Arrow
-  m_TagString: Untagged
+  m_TagString: Arrow
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -71,7 +71,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -1426171377
-  m_SortingLayer: 6
+  m_SortingLayer: 7
   m_SortingOrder: 0
   m_Sprite: {fileID: -3246028407001408874, guid: f42176bbc0b84b54e83c161abc6eb071,
     type: 3}
@@ -132,4 +132,3 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 860ed17d069190044871d0ec07d83fbd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_PushForce: {x: 0, y: 25}

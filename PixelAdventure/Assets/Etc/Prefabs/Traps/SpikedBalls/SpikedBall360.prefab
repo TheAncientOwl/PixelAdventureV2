@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2518303722147941615}
   - component: {fileID: 2518303722147941614}
-  m_Layer: 0
+  m_Layer: 15
   m_Name: Chain
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -90,7 +90,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2518303722256788793}
-  m_Layer: 0
+  m_Layer: 15
   m_Name: Center
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -122,9 +122,9 @@ GameObject:
   m_Component:
   - component: {fileID: 2518303722813256855}
   - component: {fileID: 2518303722813256852}
-  m_Layer: 0
+  m_Layer: 15
   m_Name: SpikedBall360
-  m_TagString: Untagged
+  m_TagString: SpikedBall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -173,7 +173,7 @@ GameObject:
   - component: {fileID: 2518303724011454801}
   - component: {fileID: 2518303724011454807}
   - component: {fileID: 2518303724011454804}
-  m_Layer: 0
+  m_Layer: 15
   m_Name: Ball
   m_TagString: Untagged
   m_Icon: {fileID: 0}

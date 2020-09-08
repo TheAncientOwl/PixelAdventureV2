@@ -14,9 +14,9 @@ GameObject:
   - component: {fileID: 8700994779456972352}
   - component: {fileID: 8700994779456972359}
   - component: {fileID: 8700994779456972353}
-  m_Layer: 0
+  m_Layer: 15
   m_Name: Saw
-  m_TagString: Untagged
+  m_TagString: Saw
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
