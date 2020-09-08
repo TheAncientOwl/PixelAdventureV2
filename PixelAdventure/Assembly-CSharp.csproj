@@ -70,7 +70,8 @@
      <Compile Include="Assets\PixelAdventure\Traps\RockHead.cs" />
      <Compile Include="Assets\PixelAdventure\Traps\Saw.cs" />
      <Compile Include="Assets\PixelAdventure\Traps\SpikeHead.cs" />
-     <Compile Include="Assets\PixelAdventure\Traps\SpikedBall.cs" />
+     <Compile Include="Assets\PixelAdventure\Traps\SpikedBalls\SpikedBall180.cs" />
+     <Compile Include="Assets\PixelAdventure\Traps\SpikedBalls\SpikedBall360.cs" />
      <Compile Include="Assets\PixelAdventure\Traps\Trampoline.cs" />
     <Reference Include="UnityEngine">
         <HintPath>C:/Program Files/Unity/Editor/Data/Managed/UnityEngine/UnityEngine.dll</HintPath>
