@@ -6,7 +6,6 @@ namespace PixelAdventure.Traps
 {
     public class Arrow : MonoBehaviour
     {
-        private static readonly int k_HIT_HASH = Animator.StringToHash("hit");
         private static readonly Vector2 k_PUSH_FORCE = new Vector2(0f, 27f);
 
         private void OnTriggerEnter2D(Collider2D collider)
@@ -15,7 +14,7 @@ namespace PixelAdventure.Traps
             {
                 Player.Velocity = k_PUSH_FORCE;
                 CameraShaker.Instance.Shake();
-                GetComponent<Animator>().SetTrigger(k_HIT_HASH);
+                GetComponent<Animator>().SetTrigger(AnimatorHashes.HIT);
                 Destroy(this.gameObject, 0.2f);
             }
         }

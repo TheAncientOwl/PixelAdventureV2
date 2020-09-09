@@ -8,7 +8,7 @@ namespace PixelAdventure.Traps.API
         private void OnTriggerEnter2D(Collider2D other) 
         {
             if (other.CompareTag(Player.TAG))
-                Player.Instance.Die();    
+                Player.Die();    
         }
     }
 }

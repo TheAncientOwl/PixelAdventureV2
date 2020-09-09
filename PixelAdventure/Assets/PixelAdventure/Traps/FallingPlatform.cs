@@ -1,4 +1,5 @@
 ﻿using PixelAdventure.PlayerLogics;
+using PixelAdventure.API;
 using System.Collections;
 using UnityEngine;
 
@@ -6,7 +7,6 @@ namespace PixelAdventure.Traps
 {
     public class FallingPlatform : MonoBehaviour
     {
-        private static readonly int k_OFF_HASH = Animator.StringToHash("off");
         private const float k_UP_DISTANCE = 0.25f;
         private const float k_SPEED = 0.3f;
 
@@ -38,7 +38,7 @@ namespace PixelAdventure.Traps
         {
             m_Falling = true;
             m_On = false;
-            GetComponent<Animator>().SetTrigger(k_OFF_HASH);
+            GetComponent<Animator>().SetTrigger(AnimatorHashes.OFF);
             GetComponent<Rigidbody2D>().isKinematic = false;
             GetComponentInChildren<ParticleSystem>().Stop();
             StopAllCoroutines();

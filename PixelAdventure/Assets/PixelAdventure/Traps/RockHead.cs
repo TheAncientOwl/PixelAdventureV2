@@ -6,14 +6,6 @@ namespace PixelAdventure.Traps
 {
     public class RockHead : MonoBehaviour
     {
-
-        private static readonly int k_IDLE_HASH   = Animator.StringToHash("idle");
-        private static readonly int k_BLINK_HASH  = Animator.StringToHash("blink");
-        private static readonly int k_TOP_HIT     = Animator.StringToHash("topHit");
-        private static readonly int k_LEFT_HIT    = Animator.StringToHash("leftHit");
-        private static readonly int k_RIGHT_HIT   = Animator.StringToHash("rightHit");
-        private static readonly int k_BOTTOM_HIT  = Animator.StringToHash("bottomHit");
-
         private const float k_IDLE_TIME = 1f - 0.2f;//- k_HIT_ANIMATION_TIME
         private const float k_BLINK_ANIMATION_TIME = 0.2f;
         private const float k_HIT_ANIMATION_TIME = 0.2f;
@@ -132,7 +124,7 @@ namespace PixelAdventure.Traps
             m_CircleCollider2D.enabled = true;
             yield return new WaitForSeconds(k_HIT_ANIMATION_TIME);
 
-            m_Animator.SetTrigger(k_IDLE_HASH);
+            m_Animator.SetTrigger(AnimatorHashes.IDLE);
             yield return new WaitForSeconds(k_IDLE_TIME);
 
             m_MoveLock = false;
@@ -142,28 +134,28 @@ namespace PixelAdventure.Traps
 
         private void Blink()
         {
-            m_Animator.SetTrigger(k_BLINK_HASH);
+            m_Animator.SetTrigger(AnimatorHashes.BLINK);
             Invoke("Idle", k_BLINK_ANIMATION_TIME);
         }
 
-        private void Idle() => m_Animator.SetTrigger(k_IDLE_HASH);
+        private void Idle() => m_Animator.SetTrigger(AnimatorHashes.IDLE);
 
         private int GetAnimationTriggerHash(Vector2 startPos, Vector2 endPos)
         {
             if (startPos.x > endPos.x)
-                return k_LEFT_HIT;
+                return AnimatorHashes.LEFT_HIT;
 
             if (startPos.x < endPos.x)
-                return k_RIGHT_HIT;
+                return AnimatorHashes.RIGHT_HIT;
 
             if (startPos.y > endPos.y)
-                return k_BOTTOM_HIT;
+                return AnimatorHashes.BOTTOM_HIT;
 
             if (startPos.y < endPos.y)
-                return k_TOP_HIT;
+                return AnimatorHashes.TOP_HIT;
 
             Debug.LogError("Something went wrong in");
-            return k_IDLE_HASH;
+            return AnimatorHashes.IDLE;
         }
     }
 }

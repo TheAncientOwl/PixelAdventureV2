@@ -1,11 +1,11 @@
-﻿using System.Collections;
+﻿using PixelAdventure.API;
+using System.Collections;
 using UnityEngine;
 
 namespace PixelAdventure.Traps
 {
     public class Saw : MonoBehaviour
     {
-        private static readonly int k_ON_HASH = Animator.StringToHash("on");
         private const float k_SPEED = 2f;
 
         [SerializeField] float m_OffTime = 0.5f;
@@ -32,7 +32,7 @@ namespace PixelAdventure.Traps
             m_PointIndex = 0;
 
             m_Animator = GetComponent<Animator>();
-            m_Animator.SetBool(k_ON_HASH, true);
+            m_Animator.SetBool(AnimatorHashes.ON, true);
         }
 
         private void Update() 

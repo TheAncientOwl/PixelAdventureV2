@@ -1,4 +1,5 @@
 ﻿using PixelAdventure.Traps.Platforms.API;
+using PixelAdventure.API;
 using System.Collections;
 using System;
 using UnityEngine;
@@ -7,7 +8,6 @@ namespace PixelAdventure.Traps.Platforms.Brown
 {
     public class BrownHorizontalMovement : BaseMovement
     {
-        private static readonly int k_ON_HASH = Animator.StringToHash("on");
         private MonoBehaviour m_Behaviour = null;
         private BrownBounds m_Bounds;
         private Transform m_Body = null;
@@ -24,14 +24,14 @@ namespace PixelAdventure.Traps.Platforms.Brown
             m_Animator = animator;
             m_HasPlayer = hasPlayer;
 
-            m_Animator.SetBool(k_ON_HASH, false);
+            m_Animator.SetBool(AnimatorHashes.ON, false);
         }
 
         public override void Move()
         {
             if (!m_MoveLock)
             {
-                m_Animator.SetBool(k_ON_HASH, true);
+                m_Animator.SetBool(AnimatorHashes.ON, true);
                 if (m_MoveToTarget)
                     m_Behaviour.StartCoroutine(MoveToTarget());
                 else
@@ -55,7 +55,7 @@ namespace PixelAdventure.Traps.Platforms.Brown
                     yield return null;
                 }
 
-            m_Animator.SetBool(k_ON_HASH, false);
+            m_Animator.SetBool(AnimatorHashes.ON, false);
 
             m_MoveLock = false;
             m_MoveToTarget = !m_MoveToTarget;
@@ -79,7 +79,7 @@ namespace PixelAdventure.Traps.Platforms.Brown
                     yield return null;
                 }
 
-            m_Animator.SetBool(k_ON_HASH, false);
+            m_Animator.SetBool(AnimatorHashes.ON, false);
             while (m_HasPlayer()) yield return null;
 
             m_MoveLock = false;

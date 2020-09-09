@@ -6,7 +6,6 @@ namespace PixelAdventure.Items.Boxes
 {
     public class Box : MonoBehaviour
     {
-        private static readonly int k_HIT_HASH = Animator.StringToHash("hit");
         private static readonly Vector2 k_PUSH_VELOCITY = new Vector2(0f, 24f);
         private static CameraShaker m_CameraShaker = null;
 
@@ -49,7 +48,7 @@ namespace PixelAdventure.Items.Boxes
         private void Hit()
         {
             m_CameraShaker.Shake();
-            m_Animator.SetTrigger(k_HIT_HASH);
+            m_Animator.SetTrigger(AnimatorHashes.HIT);
 
             if (!m_ThrowAllFruitsOnBreak)
                 for (int i = 0; i < m_FruitsPerJump; ++i)

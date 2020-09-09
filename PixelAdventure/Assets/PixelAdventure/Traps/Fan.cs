@@ -1,11 +1,11 @@
 ﻿using PixelAdventure.PlayerLogics;
+using PixelAdventure.API;
 using UnityEngine;
 
 namespace PixelAdventure.Traps
 {
     public class Fan : MonoBehaviour
     {
-        private static readonly int k_ON_HASH = Animator.StringToHash("on");
         private const float k_PUSH_FORCE_HORIZONTAL = 70f;
         private const float k_PUSH_FORCE_VERTICAL = 100f;
         private const float k_AIR_DRAG = 1.25f;
@@ -28,14 +28,14 @@ namespace PixelAdventure.Traps
             m_Particles.Play();
 
             m_Animator = GetComponent<Animator>();
-            m_Animator.SetBool(k_ON_HASH, m_On);
+            m_Animator.SetBool(AnimatorHashes.ON, m_On);
 
             m_Timer = m_SwitchTime;
             if (m_On)
                 m_Particles.Play();
             else
                 m_Particles.Stop();
-            m_Animator.SetBool(k_ON_HASH, m_On);
+            m_Animator.SetBool(AnimatorHashes.ON, m_On);
         }
 
         private void Update() 
@@ -49,7 +49,7 @@ namespace PixelAdventure.Traps
                     m_Particles.Play();
                 else
                     m_Particles.Stop();
-                m_Animator.SetBool(k_ON_HASH, m_On);
+                m_Animator.SetBool(AnimatorHashes.ON, m_On);
             }
         }
 

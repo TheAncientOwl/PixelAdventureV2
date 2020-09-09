@@ -5,9 +5,7 @@ namespace PixelAdventure.PlayerLogics
 {
     public class Player : MonoBehaviour
     {
-        private static readonly int k_HIT_HASH = Animator.StringToHash("hit");
-
-        public static Player Instance {get; private set;}
+        private static Player Instance {get; set;}
         public const string TAG = "Player";
 
         private static SpriteRenderer m_SpriteRenderer = null;
@@ -38,10 +36,18 @@ namespace PixelAdventure.PlayerLogics
             m_Animator = GetComponent<Animator>();
         }
 
-        public void Die()
+        public static void Die()
+        {
+            if (Instance)
+                Instance.DieP();
+            else
+                Debug.LogError("PLAYER NOT INSTANCIATED!");
+        }
+
+        private void DieP()
         {
             CameraShaker.Instance.Shake();
-            GetComponent<Animator>().SetTrigger(k_HIT_HASH);
+            GetComponent<Animator>().SetTrigger(AnimatorHashes.HIT);
             GetComponent<BoxCollider2D>().enabled = false;
             Rigidbody2D rigidbody2D = Player.m_Rigidbody2D;
             rigidbody2D.constraints = RigidbodyConstraints2D.None;

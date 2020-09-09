@@ -1,16 +1,11 @@
-﻿using UnityEngine;
+﻿using PixelAdventure.API;
+using UnityEngine;
 
 namespace PixelAdventure.PlayerLogics
 {
     public class PlayerMovement : MonoBehaviour
     {
         #region << constants >>
-        private static readonly int k_RUN_HASH           = Animator.StringToHash("isRunning");
-        private static readonly int k_GROUNDED_HASH      = Animator.StringToHash("isGrounded");
-        private static readonly int k_Y_VELOCITY_HASH    = Animator.StringToHash("yVelocity");
-        private static readonly int k_DOUBLE_JUMP_HASH   = Animator.StringToHash("isDoubleJumping");
-        private static readonly int k_WALL_SLIDING_HASH  = Animator.StringToHash("wallSliding");
-
         private static readonly Vector2 k_JUMP_VELOCITY         = new Vector2(0f, 24f);
         private static readonly Vector2 k_WALL_JUMP_VELOCITY    = new Vector2(6f, 21f);
         private static readonly Vector2 k_DOUBLE_JUMP_VELOCITY  = new Vector2(0f, 21.6f);
@@ -94,12 +89,12 @@ namespace PixelAdventure.PlayerLogics
                 else if (m_CanDoubleJump) DoubleJump();
             }
 
-            Player.Animator.SetBool(k_GROUNDED_HASH, m_Grounded);
-            Player.Animator.SetBool(k_WALL_SLIDING_HASH, m_WallSliding);
+            Player.Animator.SetBool(AnimatorHashes.GROUNDED, m_Grounded);
+            Player.Animator.SetBool(AnimatorHashes.WALL_SLIDING, m_WallSliding);
             if (m_Grounded)
-                Player.Animator.SetBool(k_RUN_HASH, m_Direction != 0);
+                Player.Animator.SetBool(AnimatorHashes.RUN, m_Direction != 0);
             else
-                Player.Animator.SetFloat(k_Y_VELOCITY_HASH, Player.YVelocity);
+                Player.Animator.SetFloat(AnimatorHashes.Y_VELOCITY, Player.YVelocity);
         }
 
         private void FixedUpdate()
@@ -159,7 +154,7 @@ namespace PixelAdventure.PlayerLogics
         {
             m_CanDoubleJump = false;
             Player.Velocity = k_DOUBLE_JUMP_VELOCITY;
-            Player.Animator.SetTrigger(k_DOUBLE_JUMP_HASH);
+            Player.Animator.SetTrigger(AnimatorHashes.DOUBLE_JUMP);
         }
 
         private void WallJump()
@@ -168,7 +163,7 @@ namespace PixelAdventure.PlayerLogics
             m_WallJump = true;
             m_WallSliding = false;
             m_CanDoubleJump = true;
-            Player.Animator.SetBool(k_WALL_SLIDING_HASH, false);
+            Player.Animator.SetBool(AnimatorHashes.WALL_SLIDING, false);
             Invoke(k_SET_WALL_JUMP_TO_FALSE_FUNC, k_WALL_JUMP_TIME);
         }
         private void SetWallJumpToFalse() => m_WallJump = false;

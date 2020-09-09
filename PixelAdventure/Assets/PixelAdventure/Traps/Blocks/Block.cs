@@ -7,7 +7,6 @@ namespace PixelAdventure.Traps.Blocks
 {
     public class Block : MonoBehaviour
     {
-        private static readonly int k_HIT_HASH = Animator.StringToHash("hit");
         private static readonly Vector2 k_PUSH_VELOCITY = new Vector2(0f, 24f);
         private static CameraShaker m_CameraShaker = null;
 
@@ -38,7 +37,7 @@ namespace PixelAdventure.Traps.Blocks
         private IEnumerator BreakCoroutine()
         {
             m_CameraShaker.Shake();
-            m_Animator.SetTrigger(k_HIT_HASH);
+            m_Animator.SetTrigger(AnimatorHashes.HIT);
 
             yield return new WaitForSeconds(0.15f);
 

@@ -1,12 +1,11 @@
-﻿using System.Collections;
+﻿using PixelAdventure.API;
+using System.Collections;
 using UnityEngine;
 
 namespace PixelAdventure.Traps
 {
     public class Fire : MonoBehaviour
     {
-        private static readonly int k_ON_HASH  = Animator.StringToHash("on");
-        private static readonly int k_HIT_HASH = Animator.StringToHash("hit");
 
         private const float k_HIT_TIME = 0.4f;
         private const float k_ON_TIME = 0.6f;
@@ -22,7 +21,7 @@ namespace PixelAdventure.Traps
             m_CircleCollider2D.enabled = false;
             
             m_Animator = GetComponent<Animator>();
-            m_Animator.SetBool(k_ON_HASH, false);
+            m_Animator.SetBool(AnimatorHashes.ON, false);
         }
 
         public void ApplyLogics()
@@ -35,16 +34,16 @@ namespace PixelAdventure.Traps
         {
             m_Lock = true;
 
-            m_Animator.SetTrigger(k_HIT_HASH);
+            m_Animator.SetTrigger(AnimatorHashes.HIT);
 
             yield return new WaitForSeconds(k_HIT_TIME);
 
-            m_Animator.SetBool(k_ON_HASH, true);
+            m_Animator.SetBool(AnimatorHashes.ON, true);
             m_CircleCollider2D.enabled = true;
 
             yield return new WaitForSeconds(k_ON_TIME);
             
-            m_Animator.SetBool(k_ON_HASH, false);
+            m_Animator.SetBool(AnimatorHashes.ON, false);
             m_CircleCollider2D.enabled = false;
 
             m_Lock = false;

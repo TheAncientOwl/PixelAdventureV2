@@ -36,6 +36,7 @@
     <ImplicitlyExpandDesignTimeFacades>false</ImplicitlyExpandDesignTimeFacades>
   </PropertyGroup>
   <ItemGroup>
+     <Compile Include="Assets\PixelAdventure\API\AnimatorHashes.cs" />
      <Compile Include="Assets\PixelAdventure\API\CameraShaker.cs" />
      <Compile Include="Assets\PixelAdventure\API\ChildCounter.cs" />
      <Compile Include="Assets\PixelAdventure\API\RandomObjectEnabler.cs" />

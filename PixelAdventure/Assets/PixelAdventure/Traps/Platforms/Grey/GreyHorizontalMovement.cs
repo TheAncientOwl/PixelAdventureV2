@@ -1,5 +1,6 @@
 ﻿using PixelAdventure.Traps.Platforms.API;
 using PixelAdventure.PlayerLogics;
+using PixelAdventure.API;
 using System.Collections;
 using System;
 using UnityEngine;
@@ -8,7 +9,6 @@ namespace PixelAdventure.Traps.Platforms.Grey
 {
     public class GreyHorizontalMovement : BaseMovement
     {
-        private static readonly int k_ON_HASH = Animator.StringToHash("on");
         private MonoBehaviour m_Behaviour = null;
         private GreyHorizontalBounds m_Bounds;
         private Transform m_Body = null;
@@ -25,7 +25,7 @@ namespace PixelAdventure.Traps.Platforms.Grey
             m_Animator = animator;
             m_HasPlayer = hasPlayer;
 
-            m_Animator.SetBool(k_ON_HASH, true);
+            m_Animator.SetBool(AnimatorHashes.ON, true);
         }
 
         public override void Move()
@@ -64,20 +64,20 @@ namespace PixelAdventure.Traps.Platforms.Grey
                     yield return null;
                 }
 
-            m_Animator.SetBool(k_ON_HASH, false);
+            m_Animator.SetBool(AnimatorHashes.ON, false);
             yield return new WaitForSeconds(GreyPlatform.OFF_TIME);
-            m_Animator.SetBool(k_ON_HASH, true);
+            m_Animator.SetBool(AnimatorHashes.ON, true);
 
             m_MoveLock = false;
             m_MoveLeft = !m_MoveLeft;
 
             if (m_HasPlayer())
             {
-                Player.Instance.gameObject.transform.SetParent(null);
+                Player.Transform.SetParent(null);
                 Vector3 scale = m_Body.localScale;
                 scale.x *= -1;
                 m_Body.localScale = scale;
-                Player.Instance.gameObject.transform.SetParent(m_Body);
+                Player.Transform.SetParent(m_Body);
             }
             else
             {

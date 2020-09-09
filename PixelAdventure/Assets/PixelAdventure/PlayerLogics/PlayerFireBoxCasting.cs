@@ -7,6 +7,7 @@ namespace PixelAdventure.PlayerLogics
         private static readonly Vector2 k_GROUND_BOX_CAST_SIZE = new Vector2(0.91f, 0.27f);
         private static readonly Vector2 k_SIDES_BOX_CAST_SIZE = new Vector2(0.75f, 1.31f);
 
+        private const string k_FIRE_TAG = "Fire";
         private const float k_GROUND_OFFSET_Y = 1f;
         private const float k_SIDES_OFFSET_Y = 0.27f;
 
@@ -26,7 +27,7 @@ namespace PixelAdventure.PlayerLogics
             );
 
             foreach (var obj in hits)
-                if (obj.transform.CompareTag("Fire"))
+                if (obj.transform.CompareTag(k_FIRE_TAG))
                     obj.transform.gameObject.GetComponent<Traps.Fire>().ApplyLogics();
 
             // * sides
@@ -41,7 +42,7 @@ namespace PixelAdventure.PlayerLogics
             );
 
             foreach (var obj in hits)
-                if (obj.transform.CompareTag("Fire"))
+                if (obj.transform.CompareTag(k_FIRE_TAG))
                     obj.transform.gameObject.GetComponent<Traps.Fire>().ApplyLogics();
                     
         }

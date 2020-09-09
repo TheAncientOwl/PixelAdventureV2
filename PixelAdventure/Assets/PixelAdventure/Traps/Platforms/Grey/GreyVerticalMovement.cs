@@ -1,4 +1,5 @@
 ﻿using PixelAdventure.Traps.Platforms.API;
+using PixelAdventure.API;
 using System.Collections;
 using UnityEngine;
 
@@ -6,7 +7,6 @@ namespace PixelAdventure.Traps.Platforms.Grey
 {
     public class GreyVerticalMovement : BaseMovement
     {
-        private static readonly int k_ON_HASH = Animator.StringToHash("on");
         private MonoBehaviour m_Behaviour = null;
         private GreyVerticalBounds m_Bounds;
         private Transform m_Body = null;
@@ -21,7 +21,7 @@ namespace PixelAdventure.Traps.Platforms.Grey
             m_Behaviour = behaviour;
             m_Animator = animator;
 
-            m_Animator.SetBool(k_ON_HASH, true);
+            m_Animator.SetBool(AnimatorHashes.ON, true);
         }
 
         public override void Move()
@@ -59,9 +59,9 @@ namespace PixelAdventure.Traps.Platforms.Grey
                     yield return null;
                 }
 
-            m_Animator.SetBool(k_ON_HASH, false);
+            m_Animator.SetBool(AnimatorHashes.ON, false);
             yield return new WaitForSeconds(GreyPlatform.OFF_TIME);
-            m_Animator.SetBool(k_ON_HASH, true);
+            m_Animator.SetBool(AnimatorHashes.ON, true);
 
             m_MoveLock = false;
             m_MoveTop = !m_MoveTop;

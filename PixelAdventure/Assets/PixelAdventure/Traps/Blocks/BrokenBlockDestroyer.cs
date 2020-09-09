@@ -6,15 +6,13 @@ namespace PixelAdventure.Traps.Blocks
 {
     public class BrokenBlockDestroyer : MonoBehaviour
     {
-        private static readonly int k_HIT_HASH = Animator.StringToHash("hit");
-
         private void OnCollisionEnter2D(Collision2D other) => StartCoroutine(DestroyCoroutine());
 
         private IEnumerator DestroyCoroutine()
         {
             yield return new WaitForSeconds(0.6f);
 
-            GetComponent<Animator>().SetTrigger(k_HIT_HASH);
+            GetComponent<Animator>().SetTrigger(AnimatorHashes.HIT);
 
             yield return new WaitForSeconds(0.3f);
 
