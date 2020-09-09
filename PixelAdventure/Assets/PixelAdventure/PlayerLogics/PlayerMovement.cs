@@ -28,6 +28,7 @@ namespace PixelAdventure.PlayerLogics
         public bool Grounded { get { return m_Grounded; } set { m_Grounded = value; } }
         public float LastDirection => m_LastDirection;
         public float Direction => m_Direction;
+        public bool CanMove { get { return m_CanMove; } set { m_CanMove = value; } }
         #endregion//<< properties >> << =========================================================================================== >>
         #region << serialized fields >>
         [SerializeField] bool m_FlipOnStart = false;
@@ -39,6 +40,7 @@ namespace PixelAdventure.PlayerLogics
         private float m_LastDirection = 0f;
         private bool m_FacingRight = true;
         private float m_Direction = 0f;
+        private bool m_CanMove = true;
 
         private float m_GroundedBuffer = 0f;
         private bool m_Grounded = false;
@@ -77,8 +79,10 @@ namespace PixelAdventure.PlayerLogics
 
             if (m_WallJump) 
                 Player.Velocity = new Vector2(k_WALL_JUMP_VELOCITY.x * -m_LastDirection, k_WALL_JUMP_VELOCITY.y);
-            else if (m_WallSliding) 
+            else if (m_CanMove && m_WallSliding) 
                 Player.Velocity = k_WALL_SLIDING_VELOCITY;
+               
+            //Debug.Log(Player.Velocity);
 
             if (m_JumpBuffer > 0f)
             {
@@ -92,7 +96,12 @@ namespace PixelAdventure.PlayerLogics
             Player.Animator.SetBool(AnimatorHashes.GROUNDED, m_Grounded);
             Player.Animator.SetBool(AnimatorHashes.WALL_SLIDING, m_WallSliding);
             if (m_Grounded)
-                Player.Animator.SetBool(AnimatorHashes.RUN, m_Direction != 0);
+            {
+                if (m_CanMove)
+                    Player.Animator.SetBool(AnimatorHashes.RUN, m_Direction != 0);
+                else
+                    Player.Animator.SetBool(AnimatorHashes.RUN, false);
+            }
             else
                 Player.Animator.SetFloat(AnimatorHashes.Y_VELOCITY, Player.YVelocity);
         }
@@ -106,7 +115,8 @@ namespace PixelAdventure.PlayerLogics
 
             WallBoxCast(bounds.center);
 
-            MoveHorizontal(Time.fixedDeltaTime);
+            if (m_CanMove)
+                MoveHorizontal(Time.fixedDeltaTime);
         }
 
         #region << box casts >>

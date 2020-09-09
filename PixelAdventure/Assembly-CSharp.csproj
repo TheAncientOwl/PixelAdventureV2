@@ -76,6 +76,7 @@
      <Compile Include="Assets\PixelAdventure\Traps\SpikeHead.cs" />
      <Compile Include="Assets\PixelAdventure\Traps\SpikedBalls\SpikedBall180.cs" />
      <Compile Include="Assets\PixelAdventure\Traps\SpikedBalls\SpikedBall360.cs" />
+     <Compile Include="Assets\PixelAdventure\Traps\Terrain\Mud.cs" />
      <Compile Include="Assets\PixelAdventure\Traps\Terrain\Sand.cs" />
      <Compile Include="Assets\PixelAdventure\Traps\Trampoline.cs" />
     <Reference Include="UnityEngine">
