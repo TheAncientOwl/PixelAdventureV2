@@ -5,35 +5,39 @@ namespace PixelAdventure.Traps.Terrain
 {
     public class Sand : MonoBehaviour
     {
-        private const float k_DRAG_FORCE = 65f;
+        private static readonly Vector2 k_IN_SAND_SIZE = new Vector2(0f, 0.15f);
+        private const float k_DRAG_FORCE = 57f;
+        private const float k_TIMER = 0.1f;
 
-        private PlayerMovement m_PlayerMovement = null;
-        private SpriteRenderer m_PlayerSpriteRenderer = null;
-        private Rigidbody2D m_PlayerRigidbody2D = null;
+        private bool m_InSand = false;
+        private float m_Timer = 0f;
 
-        private bool m_Lock = false;
+        private void Update() => m_Timer += Time.deltaTime;
 
-        private void Start() 
+        private void OnCollisionEnter2D(Collision2D other) 
         {
-            m_PlayerMovement = Player.Movement;
-            m_PlayerSpriteRenderer = m_PlayerMovement.gameObject.GetComponent<SpriteRenderer>();
-            m_PlayerRigidbody2D = Player.Rigidbody2D;    
+            if (!m_InSand)
+            {
+                Player.Rigidbody2D.velocity = Vector2.zero;
+                m_InSand = true;
+                Player.BoxCollider2D.size -= k_IN_SAND_SIZE;
+                m_Timer = 0f;
+            }
         }
 
-        private void OnCollisionStay2D(Collision2D other) 
+        private void OnCollisionStay2D(Collision2D other)
         {
-            m_PlayerRigidbody2D.AddForce(new Vector2(-m_PlayerMovement.Direction * k_DRAG_FORCE, 0f));
-
-            if (!m_Lock)
-            {
-                m_Lock = true;
-            }
-            
+            Player.Rigidbody2D.AddForce(new Vector2(-Player.Movement.Direction * k_DRAG_FORCE, 0f));
         }
 
         private void OnCollisionExit2D(Collision2D other) 
         {
-            
+            if (m_InSand && m_Timer > k_TIMER)
+            {
+                m_InSand = false;
+                Player.BoxCollider2D.size += k_IN_SAND_SIZE;
+            }
         }
+
     }
 }
