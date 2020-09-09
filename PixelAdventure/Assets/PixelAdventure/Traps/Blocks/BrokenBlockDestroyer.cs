@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using PixelAdventure.API;
+using System.Collections;
 using UnityEngine;
 
 namespace PixelAdventure.Traps.Blocks
@@ -7,16 +8,17 @@ namespace PixelAdventure.Traps.Blocks
     {
         private static readonly int k_HIT_HASH = Animator.StringToHash("hit");
 
-        private void OnCollisionEnter2D(Collision2D other) 
-        {
-            if (other.collider.gameObject.CompareTag("Ground"))
-                StartCoroutine(DestroyCoroutine());
-        } 
+        private void OnCollisionEnter2D(Collision2D other) => StartCoroutine(DestroyCoroutine());
 
         private IEnumerator DestroyCoroutine()
         {
+            yield return new WaitForSeconds(0.6f);
+
             GetComponent<Animator>().SetTrigger(k_HIT_HASH);
-            yield return new WaitForSeconds(0.2f);
+
+            yield return new WaitForSeconds(0.3f);
+
+            GetComponentInParent<ChildCounter>().Decrease();
 
             Destroy(this.gameObject);
 

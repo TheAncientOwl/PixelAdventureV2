@@ -37,6 +37,7 @@
   </PropertyGroup>
   <ItemGroup>
      <Compile Include="Assets\PixelAdventure\API\CameraShaker.cs" />
+     <Compile Include="Assets\PixelAdventure\API\ChildCounter.cs" />
      <Compile Include="Assets\PixelAdventure\API\RandomObjectEnabler.cs" />
      <Compile Include="Assets\PixelAdventure\API\Utils.cs" />
      <Compile Include="Assets\PixelAdventure\Background\BackgroundManager.cs" />

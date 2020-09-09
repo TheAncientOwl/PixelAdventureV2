@@ -48,11 +48,13 @@ namespace PixelAdventure.Traps.Blocks
                 Rigidbody2D rigidbody2D = brokenPart.GetComponent<Rigidbody2D>();
                 rigidbody2D.velocity = new Vector2
                 (
-                    x: Random.Range(-2f, 2f),
-                    y: Random.Range(2f, 3f)
+                    x: Random.Range(-3f, 3f),
+                    y: Random.Range(2f, 6f)
                 );
                 rigidbody2D.AddTorque(Random.Range(-5f, 5f));
             }
+
+            GetComponentInParent<ChildCounter>().Decrease();
 
             Destroy(this.gameObject);
 
