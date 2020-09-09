@@ -1,4 +1,5 @@
 ﻿using PixelAdventure.PlayerLogics;
+using PixelAdventure.API;
 using UnityEngine;
 
 namespace PixelAdventure.Items.Fruits
@@ -12,8 +13,15 @@ namespace PixelAdventure.Items.Fruits
             if (other.gameObject.CompareTag(Player.TAG))
             {
                 GetComponent<Animator>().SetTrigger(k_COLLECTED_HASH);
-                Destroy(this.gameObject, 0.5f);
+                Invoke("DestroySelf", 0.5f);
             }    
+        }
+
+        private void DestroySelf()
+        {
+            Debug.Log("Fruit destroy!");
+            GetComponentInParent<ChildCounter>().Decrease();
+            Destroy(this.gameObject);
         }
 
     }

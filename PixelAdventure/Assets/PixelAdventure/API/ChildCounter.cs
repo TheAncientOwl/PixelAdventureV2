@@ -8,10 +8,14 @@ namespace PixelAdventure.API
 
         public void Decrease()
         {
+            int id = this.gameObject.GetInstanceID();
+            Debug.Log(id + " : " + m_Count);
             m_Count--;
             if (m_Count <= 0)
-                Destroy(this.gameObject);
+                Invoke("DestroySelf", 1.5f);
         }
+
+        private void DestroySelf() => Destroy(this.gameObject);
 
     }
 }

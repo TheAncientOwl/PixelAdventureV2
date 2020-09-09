@@ -92,6 +92,8 @@ namespace PixelAdventure.Items.Boxes
                     );
                 }
 
+                GetComponentInParent<ChildCounter>().Decrease();
+
                 Destroy(this.gameObject);
             }
         }
