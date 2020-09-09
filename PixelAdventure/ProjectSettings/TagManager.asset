@@ -26,6 +26,8 @@ TagManager:
   - Fruit
   - Box
   - BoxBrokenPart
+  - Block
+  - BlockBrokenPart
   layers:
   - Default
   - TransparentFX
