@@ -12,21 +12,12 @@ namespace PixelAdventure.PlayerLogics
 
         [SerializeField] LayerMask m_FireLayerMask = 0;
 
-        private PlayerMovement m_PlayerMovement = null;
-        private Transform m_Transform = null;
-
-        private void Start() 
-        {
-            m_Transform = GetComponent<Transform>();
-            m_PlayerMovement = PlayerMovement.Instance;
-        }
-
         private void FixedUpdate() 
         {
             // * ground
             RaycastHit2D[] hits = Physics2D.BoxCastAll
             (
-                origin    : m_Transform.position + Vector3.down * k_GROUND_OFFSET_Y,
+                origin    : Player.Transform.position + Vector3.down * k_GROUND_OFFSET_Y,
                 size      : k_GROUND_BOX_CAST_SIZE,
                 layerMask : m_FireLayerMask,
                 direction : Vector2.down,
@@ -41,7 +32,7 @@ namespace PixelAdventure.PlayerLogics
             // * sides
             hits = Physics2D.BoxCastAll
             (
-                origin    : m_Transform.position + Vector3.down * k_SIDES_OFFSET_Y + new Vector3((m_PlayerMovement.LastDirection * k_SIDES_BOX_CAST_SIZE.x / 2f), 0f, 0f),
+                origin    : Player.Transform.position + Vector3.down * k_SIDES_OFFSET_Y + new Vector3((Player.Movement.LastDirection * k_SIDES_BOX_CAST_SIZE.x / 2f), 0f, 0f),
                 size      : k_SIDES_BOX_CAST_SIZE,
                 layerMask : m_FireLayerMask,
                 direction : Vector2.down,

@@ -6,10 +6,8 @@ namespace PixelAdventure.PlayerLogics
     {
         [SerializeField] RuntimeAnimatorController[] m_Animators = null;
 
-        private void Start()
-        {
-            Animator animator = GetComponent<Animator>();
-            animator.runtimeAnimatorController = m_Animators[Random.Range(0, m_Animators.Length - 1)];
-        }
+        private void Start() 
+        => Player.Animator.runtimeAnimatorController = m_Animators[Random.Range(0, m_Animators.Length - 1)];
+        
     }
 }

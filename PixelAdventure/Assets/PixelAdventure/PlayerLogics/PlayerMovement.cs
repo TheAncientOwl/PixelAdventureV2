@@ -4,7 +4,6 @@ namespace PixelAdventure.PlayerLogics
 {
     public class PlayerMovement : MonoBehaviour
     {
-        public static PlayerMovement Instance { get; private set; }
         #region << constants >>
         private static readonly int k_RUN_HASH           = Animator.StringToHash("isRunning");
         private static readonly int k_GROUNDED_HASH      = Animator.StringToHash("isGrounded");
@@ -31,11 +30,9 @@ namespace PixelAdventure.PlayerLogics
         private const float k_JUMP_BUFFER = 0.2f;
         #endregion//<< constants >> << ============================================================================================ >>
         #region << properties >>
-        public Vector2 Velocity { get { return m_Rigidbody2D.velocity; } set { m_Rigidbody2D.velocity = value; } }
         public bool Grounded { get { return m_Grounded; } set { m_Grounded = value; } }
-        public float YVelocity => m_Rigidbody2D.velocity.y;
-        public Rigidbody2D Rigidbody2D => m_Rigidbody2D;
         public float LastDirection => m_LastDirection;
+        public float Direction => m_Direction;
         #endregion//<< properties >> << =========================================================================================== >>
         #region << serialized fields >>
         [SerializeField] bool m_FlipOnStart = false;
@@ -43,10 +40,6 @@ namespace PixelAdventure.PlayerLogics
         [SerializeField] LayerMask m_WallLayerMask = 0;
         #endregion//<< serialized fields >> << ==================================================================================== >>
         #region << class variables >>
-        private BoxCollider2D m_BoxCollider2D = null;
-        private Rigidbody2D m_Rigidbody2D = null;
-        private Animator m_Animator = null;
-        
         private Vector2 m_AuxVelocity = Vector2.zero;
         private float m_LastDirection = 0f;
         private bool m_FacingRight = true;
@@ -62,14 +55,8 @@ namespace PixelAdventure.PlayerLogics
         private bool m_WallJump = false;
         #endregion//<< class variables >> << ====================================================================================== >>
 
-        private void Awake() => Instance = this;
-
         private void Start()
         {
-            m_Animator = GetComponent<Animator>();
-            m_Rigidbody2D = GetComponent<Rigidbody2D>();
-            m_BoxCollider2D = GetComponent<BoxCollider2D>();
-
             if (m_FlipOnStart)
             {
                 m_FacingRight = !m_FacingRight;
@@ -88,15 +75,15 @@ namespace PixelAdventure.PlayerLogics
 
             m_GroundedBuffer = m_Grounded ? k_GROUNDED_BUFFER : m_GroundedBuffer - Time.deltaTime;
 
-            if (m_Grounded || m_Rigidbody2D.velocity.y > 0f) 
+            if (m_Grounded || Player.YVelocity > 0f) 
                 m_WallSliding = false;
 
             m_JumpBuffer = Input.GetKeyDown(KeyCode.Space) || Input.GetKeyDown(KeyCode.UpArrow) || Input.GetKeyDown(KeyCode.W) ? k_JUMP_BUFFER : m_JumpBuffer - Time.deltaTime;
 
             if (m_WallJump) 
-                m_Rigidbody2D.velocity = new Vector2(k_WALL_JUMP_VELOCITY.x * -m_LastDirection, k_WALL_JUMP_VELOCITY.y);
+                Player.Velocity = new Vector2(k_WALL_JUMP_VELOCITY.x * -m_LastDirection, k_WALL_JUMP_VELOCITY.y);
             else if (m_WallSliding) 
-                m_Rigidbody2D.velocity = k_WALL_SLIDING_VELOCITY;
+                Player.Velocity = k_WALL_SLIDING_VELOCITY;
 
             if (m_JumpBuffer > 0f)
             {
@@ -107,19 +94,19 @@ namespace PixelAdventure.PlayerLogics
                 else if (m_CanDoubleJump) DoubleJump();
             }
 
-            m_Animator.SetBool(k_GROUNDED_HASH, m_Grounded);
-            m_Animator.SetBool(k_WALL_SLIDING_HASH, m_WallSliding);
-            if (m_Grounded) 
-                m_Animator.SetBool(k_RUN_HASH, m_Direction != 0);
-            else 
-                m_Animator.SetFloat(k_Y_VELOCITY_HASH, m_Rigidbody2D.velocity.y);
+            Player.Animator.SetBool(k_GROUNDED_HASH, m_Grounded);
+            Player.Animator.SetBool(k_WALL_SLIDING_HASH, m_WallSliding);
+            if (m_Grounded)
+                Player.Animator.SetBool(k_RUN_HASH, m_Direction != 0);
+            else
+                Player.Animator.SetFloat(k_Y_VELOCITY_HASH, Player.YVelocity);
         }
 
         private void FixedUpdate()
         {
-            Bounds bounds = m_BoxCollider2D.bounds;
+            Bounds bounds = Player.BoxCollider2D.bounds;
 
-            if (m_Rigidbody2D.velocity.y < 1f)
+            if (Player.YVelocity < 1f)
                 GroundBoxCast(bounds.center, bounds.size.y);
 
             WallBoxCast(bounds.center);
@@ -165,14 +152,14 @@ namespace PixelAdventure.PlayerLogics
             m_Grounded = false;
             m_GroundedBuffer = 0f;
             m_CanDoubleJump = true;
-            m_Rigidbody2D.velocity = k_JUMP_VELOCITY;
+            Player.Velocity = k_JUMP_VELOCITY;
         }
 
         private void DoubleJump()
         {
             m_CanDoubleJump = false;
-            m_Rigidbody2D.velocity = k_DOUBLE_JUMP_VELOCITY;
-            m_Animator.SetTrigger(k_DOUBLE_JUMP_HASH);
+            Player.Velocity = k_DOUBLE_JUMP_VELOCITY;
+            Player.Animator.SetTrigger(k_DOUBLE_JUMP_HASH);
         }
 
         private void WallJump()
@@ -181,7 +168,7 @@ namespace PixelAdventure.PlayerLogics
             m_WallJump = true;
             m_WallSliding = false;
             m_CanDoubleJump = true;
-            m_Animator.SetBool(k_WALL_SLIDING_HASH, false);
+            Player.Animator.SetBool(k_WALL_SLIDING_HASH, false);
             Invoke(k_SET_WALL_JUMP_TO_FALSE_FUNC, k_WALL_JUMP_TIME);
         }
         private void SetWallJumpToFalse() => m_WallJump = false;
@@ -190,10 +177,10 @@ namespace PixelAdventure.PlayerLogics
         private void MoveHorizontal(float deltaTime)
         {
             float move = k_RUN_SPEED * m_Direction * deltaTime;
-            m_Rigidbody2D.velocity = Vector2.SmoothDamp
+            Player.Velocity = Vector2.SmoothDamp
             (
-                current         : m_Rigidbody2D.velocity,
-                target          : new Vector2(move, m_Rigidbody2D.velocity.y),
+                current         : Player.Velocity,
+                target          : new Vector2(move, Player.YVelocity),
                 currentVelocity : ref m_AuxVelocity,
                 smoothTime      : k_MOVEMENT_SMOOTHING
             );

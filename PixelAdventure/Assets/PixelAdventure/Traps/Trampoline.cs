@@ -17,7 +17,7 @@ namespace PixelAdventure.Traps
         {
             if (collider.CompareTag(Player.TAG))
             {
-                PlayerMovement.Instance.Velocity = k_PUSH_FORCE;
+                Player.Velocity = k_PUSH_FORCE;
                 CameraShaker.Instance.Shake();
                 m_Animator.SetTrigger(k_PUSH_HASH);
             }

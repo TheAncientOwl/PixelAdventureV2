@@ -39,7 +39,7 @@ namespace PixelAdventure.Items.Boxes
                 if (y < 0f)
                 {
                     Hit();
-                    PlayerMovement.Instance.Velocity = k_PUSH_VELOCITY;
+                    Player.Velocity = k_PUSH_VELOCITY;
                 }
                 else if (y > 0f) 
                     Hit();    

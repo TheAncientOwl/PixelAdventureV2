@@ -57,9 +57,9 @@ namespace PixelAdventure.Traps
         {
             if (!m_On) return;
 
-            PlayerMovement movement = PlayerMovement.Instance;
+            PlayerMovement movement = Player.Movement;
 
-            var rb = movement.Rigidbody2D;
+            var rb = Player.Rigidbody2D;
             switch (m_AirDirection)
             {
                 case FanAirDirection.Up:

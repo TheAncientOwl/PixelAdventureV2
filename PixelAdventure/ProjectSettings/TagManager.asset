@@ -77,6 +77,9 @@ TagManager:
   - name: MapSemiSolid
     uniqueID: 3233833577
     locked: 0
+  - name: MapSand
+    uniqueID: 1076977935
+    locked: 0
   - name: UnderPlayer
     uniqueID: 4097752901
     locked: 0

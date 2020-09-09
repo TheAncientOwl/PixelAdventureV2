@@ -28,7 +28,7 @@ namespace PixelAdventure.Traps.Blocks
                 if (y < 0f)
                 {
                     StartCoroutine(BreakCoroutine());
-                    PlayerMovement.Instance.Velocity = k_PUSH_VELOCITY;
+                    Player.Velocity = k_PUSH_VELOCITY;
                 }
                 else if (y > 0f)
                     StartCoroutine(BreakCoroutine());
