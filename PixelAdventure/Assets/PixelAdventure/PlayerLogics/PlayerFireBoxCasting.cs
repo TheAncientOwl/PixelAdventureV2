@@ -33,7 +33,7 @@ namespace PixelAdventure.PlayerLogics
             // * sides
             hits = Physics2D.BoxCastAll
             (
-                origin    : Player.Transform.position + Vector3.down * k_SIDES_OFFSET_Y + new Vector3((Player.Movement.LastDirection * k_SIDES_BOX_CAST_SIZE.x / 2f), 0f, 0f),
+                origin    : Player.Transform.position + Vector3.down * k_SIDES_OFFSET_Y + new Vector3((Player.MovementX.LastDirection * k_SIDES_BOX_CAST_SIZE.x / 2f), 0f, 0f),
                 size      : k_SIDES_BOX_CAST_SIZE,
                 layerMask : m_FireLayerMask,
                 direction : Vector2.down,

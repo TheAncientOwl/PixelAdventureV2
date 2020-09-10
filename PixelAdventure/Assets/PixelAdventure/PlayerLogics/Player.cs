@@ -10,14 +10,16 @@ namespace PixelAdventure.PlayerLogics
 
         private static SpriteRenderer m_SpriteRenderer = null;
         private static BoxCollider2D m_BoxCollider2D = null;
-        private static PlayerMovement m_Movement = null;
+        private static PlayerMovementX m_MovementX = null;
+        private static PlayerMovementY m_MovementY = null;
         private static Rigidbody2D m_Rigidbody2D = null;
         private static Transform m_Transform = null;
         private static Animator m_Animator = null;
 
         public static SpriteRenderer SpriteRenderer => m_SpriteRenderer;
         public static BoxCollider2D BoxCollider2D => m_BoxCollider2D;
-        public static PlayerMovement Movement => m_Movement;
+        public static PlayerMovementX MovementX => m_MovementX;
+        public static PlayerMovementY MovementY => m_MovementY;
         public static Rigidbody2D Rigidbody2D => m_Rigidbody2D;
         public static Transform Transform => m_Transform;
         public static Animator Animator => m_Animator;
@@ -30,7 +32,7 @@ namespace PixelAdventure.PlayerLogics
             Instance = this; 
             m_SpriteRenderer = GetComponent<SpriteRenderer>();
             m_BoxCollider2D = GetComponent<BoxCollider2D>();
-            m_Movement = GetComponent<PlayerMovement>();
+            m_MovementX = GetComponent<PlayerMovementX>();
             m_Rigidbody2D = GetComponent<Rigidbody2D>();
             m_Transform = GetComponent<Transform>();
             m_Animator = GetComponent<Animator>();
@@ -51,13 +53,13 @@ namespace PixelAdventure.PlayerLogics
             GetComponent<BoxCollider2D>().enabled = false;
             Rigidbody2D rigidbody2D = Player.m_Rigidbody2D;
             rigidbody2D.constraints = RigidbodyConstraints2D.None;
-            rigidbody2D.AddTorque(-Player.Movement.LastDirection * 5f, ForceMode2D.Impulse);
+            rigidbody2D.AddTorque(-Player.MovementX.LastDirection * 5f, ForceMode2D.Impulse);
             rigidbody2D.velocity = new Vector2
             (
-                x: -Player.Movement.LastDirection * 10f,
+                x: -Player.MovementX.LastDirection * 10f,
                 y: 10f
             );
-            GetComponent<PlayerMovement>().enabled = false;
+            GetComponent<PlayerMovement_Deprecated>().enabled = false;
         }
     }
 }

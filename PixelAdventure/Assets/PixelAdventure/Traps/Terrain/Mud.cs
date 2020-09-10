@@ -22,13 +22,13 @@ namespace PixelAdventure.Traps.Terrain
                 m_InMud = true;
                 Player.BoxCollider2D.size -= k_IN_SAND_SIZE;
                 m_Timer = 0f;
-                Player.Movement.CanMove = false;
+                Player.MovementX.CanMove = false;
             }
         }
 
         private void OnCollisionStay2D(Collision2D other)
         {
-            Player.Movement.CanMove = false;
+            Player.MovementX.CanMove = false;
             if (Player.YVelocity <= 0.01f)
                 Player.Velocity = Vector2.zero;
         }
@@ -40,7 +40,7 @@ namespace PixelAdventure.Traps.Terrain
                 Debug.Log("Exit");
                 m_InMud = false;
                 Player.BoxCollider2D.size += k_IN_SAND_SIZE;
-                Player.Movement.CanMove = true;
+                Player.MovementX.CanMove = true;
             }
         }
     }

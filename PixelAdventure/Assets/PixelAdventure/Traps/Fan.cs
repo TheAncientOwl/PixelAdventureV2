@@ -57,17 +57,15 @@ namespace PixelAdventure.Traps
         {
             if (!m_On) return;
 
-            PlayerMovement movement = Player.Movement;
-
             var rb = Player.Rigidbody2D;
             switch (m_AirDirection)
             {
                 case FanAirDirection.Up:
-                    movement.Grounded = false;
+                    Player.MovementY.Grounded = false;
                     rb.AddForce(new Vector2(-rb.velocity.normalized.x * k_AIR_DRAG, k_PUSH_FORCE_VERTICAL));
                     break;
                 case FanAirDirection.Down:
-                    movement.Grounded = false;
+                    Player.MovementY.Grounded = false;
                     rb.AddForce(new Vector2(-rb.velocity.normalized.x * k_AIR_DRAG, -k_PUSH_FORCE_VERTICAL));
                     break;
                 case FanAirDirection.Left:

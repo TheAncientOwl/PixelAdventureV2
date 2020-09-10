@@ -13,9 +13,10 @@ GameObject:
   - component: {fileID: 7039952494837553833}
   - component: {fileID: 7039952494837553835}
   - component: {fileID: 7039952494837553839}
-  - component: {fileID: 7039952494837553832}
+  - component: {fileID: 7444226667106657689}
   - component: {fileID: 7039952494837553838}
-  - component: {fileID: 7039952494837553834}
+  - component: {fileID: 197105048003146876}
+  - component: {fileID: 5826713751348569111}
   m_Layer: 8
   m_Name: Player
   m_TagString: Player
@@ -74,7 +75,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -204070703
-  m_SortingLayer: 6
+  m_SortingLayer: 7
   m_SortingOrder: 0
   m_Sprite: {fileID: -6367560908665664636, guid: 3750f45c844123341b9a777a96cb1eca,
     type: 3}
@@ -154,7 +155,7 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 1
   m_Constraints: 4
---- !u!114 &7039952494837553832
+--- !u!114 &7444226667106657689
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -163,28 +164,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 7039952494837553842}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0f095b02a25d44d49a40e672ed64877e, type: 3}
+  m_Script: {fileID: 11500000, guid: 2ab7b974be082d9478dc0b3b688b7cda, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_MovementSmoothing: 0.085
-  m_RunSpeed: 450
-  m_JumpVelocity: {x: 0, y: 24}
-  m_DoubleJumpVelocity: {x: 0, y: 21.6}
-  m_WallJumpVelocity: {x: 6, y: 21}
-  m_WallJumpTime: 0.05
-  m_WallSlidingVelocity: {x: 0, y: -1.26}
-  m_FlipOnStart: 0
-  m_GroundLayerMask:
-    serializedVersion: 2
-    m_Bits: 2560
-  m_WallLayerMask:
-    serializedVersion: 2
-    m_Bits: 512
-  m_GroundBoxCastSize: {x: 0.99, y: 0.46}
-  m_WallBoxCastSize: {x: 1.4, y: 1.44}
-  m_DrawGizomos: 0
-  m_GroundColor: {r: 1, g: 0.92156863, b: 0.015686275, a: 1}
-  m_WallColor: {r: 0, g: 0, b: 1, a: 1}
 --- !u!114 &7039952494837553838
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -202,7 +184,7 @@ MonoBehaviour:
   - {fileID: 9100000, guid: c124af7732724b34f9c062fa27800e9e, type: 2}
   - {fileID: 9100000, guid: 7de0247f140a4b047a75fbde8d3d5470, type: 2}
   - {fileID: 9100000, guid: a06d1ea8ad47b20489620d81487fe953, type: 2}
---- !u!114 &7039952494837553834
+--- !u!114 &197105048003146876
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -211,6 +193,27 @@ MonoBehaviour:
   m_GameObject: {fileID: 7039952494837553842}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2ab7b974be082d9478dc0b3b688b7cda, type: 3}
+  m_Script: {fileID: 11500000, guid: a34249c9ed6f1b145a2f9958b5eabd12, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  m_FlipOnStart: 0
+--- !u!114 &5826713751348569111
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7039952494837553842}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 51e3c20d6cad119459758c232283cbf1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_GroundLayerMask:
+    serializedVersion: 2
+    m_Bits: 2560
+  m_WallLayerMask:
+    serializedVersion: 2
+    m_Bits: 512
+  m_GroundColor: {r: 1, g: 0.92156863, b: 0.015686275, a: 1}
+  m_WallColor: {r: 0, g: 0, b: 1, a: 1}

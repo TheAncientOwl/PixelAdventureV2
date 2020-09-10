@@ -27,7 +27,7 @@ namespace PixelAdventure.Traps.Terrain
 
         private void OnCollisionStay2D(Collision2D other)
         {
-            Player.Rigidbody2D.AddForce(new Vector2(-Player.Movement.Direction * k_DRAG_FORCE, 0f));
+            Player.Rigidbody2D.AddForce(new Vector2(-Player.MovementX.Direction * k_DRAG_FORCE, 0f));
         }
 
         private void OnCollisionExit2D(Collision2D other) 

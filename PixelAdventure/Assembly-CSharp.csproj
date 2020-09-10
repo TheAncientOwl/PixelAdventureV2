@@ -51,7 +51,9 @@
      <Compile Include="Assets\PixelAdventure\Items\Fruits\StaticFruit.cs" />
      <Compile Include="Assets\PixelAdventure\PlayerLogics\Player.cs" />
      <Compile Include="Assets\PixelAdventure\PlayerLogics\PlayerFireBoxCasting.cs" />
-     <Compile Include="Assets\PixelAdventure\PlayerLogics\PlayerMovement.cs" />
+     <Compile Include="Assets\PixelAdventure\PlayerLogics\PlayerMovementX.cs" />
+     <Compile Include="Assets\PixelAdventure\PlayerLogics\PlayerMovementY.cs" />
+     <Compile Include="Assets\PixelAdventure\PlayerLogics\PlayerMovement_Deprecated.cs" />
      <Compile Include="Assets\PixelAdventure\PlayerLogics\PlayerRandomCharacter.cs" />
      <Compile Include="Assets\PixelAdventure\Traps\API\DeathCollider.cs" />
      <Compile Include="Assets\PixelAdventure\Traps\Arrow.cs" />

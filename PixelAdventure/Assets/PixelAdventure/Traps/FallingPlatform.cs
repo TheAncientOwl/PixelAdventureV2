@@ -30,7 +30,7 @@ namespace PixelAdventure.Traps
 
         private void OnCollisionStay2D(Collision2D other) 
         {
-            if (other.gameObject.CompareTag(Player.TAG) && Player.Movement.Grounded && !m_Falling)
+            if (other.gameObject.CompareTag(Player.TAG) && Player.MovementY.Grounded && !m_Falling)
                 Invoke("Fall", 0.5f);
         }
 
